@@ -23,4 +23,16 @@ def get_all_prducts():
     getback = []
     for pdtsList in pdtsLists:
         getback.append(pdtsList.myproducts())
-    return jsonify(getback)    
+    return jsonify(getback)  
+
+@app.route("/api/v1/products/<int:product_id>", methods=["GET"],strict_slashes=False)
+def get_single_product(product_id):
+    single = []
+    for pdtsList in pdtsLists:
+        if pdtsList.product_id == product_id:
+            req_dict = (pdtsList.myproducts_id())
+            single.append(req_dict)
+        if not single:
+            return ({"Products":"product does not exist"})    
+    else:
+        return jsonify(single), 200 
