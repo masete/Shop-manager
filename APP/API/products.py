@@ -50,4 +50,13 @@ def post_a_sale():
     salesLists.append(AllSales(sales_id, sales_quantity, sales_price))  
     return jsonify({"Sales":"a sale now exists"}), 201
 
+
+@app.route("/api/v1/sales", methods=["GET"],strict_slashes=False)  
+def get_all_sales():
+        getin = []
+        for salesList in salesLists:
+            getin.append(salesList.mysales())
+        return jsonify(getin)
+   
+
 return app
