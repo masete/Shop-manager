@@ -11,16 +11,16 @@ class AllProducts():
             'product_price': self.product_price
         }
         return productsdata
-    
+
     def myproducts_id(self):
         productsdata = {
             'product_id':self.product_id,
             'product_name': self.product_name,
             'product_price': self.product_price
-        }
-        return productsdata 
+                    }
+        return productsdata    
 
-    
+
 class AllSales():
     def __init__(self, sales_id, sales_quantity, sales_price):
         self.sales_id = sales_id
@@ -41,4 +41,6 @@ class AllSales():
             'sales_quantity': self.sales_quantity,
             'sales_price': self.sales_price,
         }       
-     
+
+
+
