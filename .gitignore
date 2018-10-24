@@ -1,1 +1,3 @@
 /myenv
+/.vscode
+/APP/API/__pycache__/
