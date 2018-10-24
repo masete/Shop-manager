@@ -57,6 +57,17 @@ def get_all_sales():
         for salesList in salesLists:
             getin.append(salesList.mysales())
         return jsonify(getin)
-   
+@app.route("/api/v1/sales/<int:sale_id>", methods=['GET'],strict_slashes=False)
+def get_single_sale(sale_id):
+    response = []
+    for saleList in salesLists:
+        if saleList.sale_id == sale_id:
+            req_dict = (saleList.mysales_id())
+            response.append(req_dict)
+    if not response:
+        return jsonify({'Sales': 'sales not found'}), 200
+    else:
+        return jsonify(response), 200         
+
 
 return app
