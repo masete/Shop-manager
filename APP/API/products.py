@@ -36,3 +36,18 @@ def get_single_product(product_id):
             return ({"Products":"product does not exist"})    
     else:
         return jsonify(single), 200 
+
+
+salesLists = []
+
+@app.route("/api/v1/sales", methods=["POST"],strict_slashes=False)
+def post_a_sale():
+    dad = request.get_json()
+    sales_id = len(salesLists) + 1
+    sales_quantity = dad['sales_quantity']
+    sales_price    = dad['sales_price']   
+
+    salesLists.append(AllSales(sales_id, sales_quantity, sales_price))  
+    return jsonify({"Sales":"a sale now exists"}), 201
+
+return app
