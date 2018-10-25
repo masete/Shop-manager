@@ -1,12 +1,17 @@
+
 language: python
+
 python:
-  - "3.6.6"
+ - "3.6"
+
+ #command to install dependencies
 install:
-  - pip install -r requirements.txt
-#Specify what command to run test
+  - "pip install -r requirements.txt"
+
+
+# command to run tests
 script:
-  - pytest --cov
-  - coverage
-  - coverage3 report
-  - coveralls 
+  - nosetests --with-coverage --cover-package=app
+
 after_success:
+- coveralls
