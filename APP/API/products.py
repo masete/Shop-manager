@@ -28,7 +28,7 @@ def start_app():
         if not isinstance(product_name, str):
              return jsonify({"Products":"Product name field can not be an int"}), 400
     
-        # pdtsLists.append(AllProducts(product_id, product_name, product_price))
+        pdtsLists.append(AllProducts(product_id, product_name, product_price))
         return jsonify({"Products": "a product now exists"}), 201
 
 
@@ -47,7 +47,7 @@ def start_app():
                 req_dict = (pdtsList.myproducts_id())
                 single.append(req_dict)
             if not single:
-                return ({"Products": "product does not exist"})
+                return jsonify({"Products": "product does not exist"})
         else:
             return jsonify(single), 200
 
@@ -60,7 +60,6 @@ def start_app():
         sales_quantity = dad['sales_quantity']
         sales_price = dad['sales_price']
 
-        salesLists.append(AllSales(sales_id, sales_quantity, sales_price))
 
         if sales_quantity == "":
             return jsonify({"Sales":"Sale field can not have space"}), 400
@@ -74,7 +73,8 @@ def start_app():
             return jsonify({"Sales":"sale price field can not be a string"}), 400
         if not isinstance(sales_quantity, str):
             return jsonify({"Sales":"sale quantity field can not be an int"}), 400
-
+            
+        salesLists.append(AllSales(sales_id, sales_quantity, sales_price))
         return jsonify({"Sales": "a sale now exists"}), 201
 
     @app.route("/api/v1/sales", methods=["GET"], strict_slashes=False)
@@ -84,12 +84,12 @@ def start_app():
             getin.append(salesList.mysales())
         return jsonify(getin)
 
-    @app.route("/api/v1/sales/<int:sale_id>", methods=['GET'], strict_slashes=False)
-    def get_single_sale(sale_id):
+    @app.route("/api/v1/sales/<int:sales_id>", methods=['GET'], strict_slashes=False)
+    def get_single_sale(sales_id):
         response = []
         for saleList in salesLists:
-            if saleList.sale_id == sale_id:
-                req_dict = (saleList.mysales_id())
+            if saleList.sales_id == sales_id:
+                req_dict = (saleList.mysales())
                 response.append(req_dict)
         if not response:
             return jsonify({'Sales': 'sales not found'}), 200

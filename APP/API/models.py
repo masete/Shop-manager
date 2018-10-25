@@ -35,12 +35,4 @@ class AllSales():
         }
         return salesdata
 
-    def mysales_id(self):
-        salesdata = {
-            'sales_id': self.sales_id,
-            'sales_quantity': self.sales_quantity,
-            'sales_price': self.sales_price,
-        }       
-
-
 
