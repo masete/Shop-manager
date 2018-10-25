@@ -9,6 +9,10 @@ def start_app():
 
     pdtsLists = []
 
+    @app.route("/", strict_slashes=False)
+    def index():
+        return jsonify({"message":"No products are available yet."})
+        
     @app.route("/api/v1/products", methods=["POST"], strict_slashes=False)
     def post_a_product():
         """params: none, post a product by postman"""
