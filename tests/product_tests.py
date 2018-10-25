@@ -157,7 +157,7 @@ class TestEndpoints(unittest.TestCase):
     def test_get_one_sale(self):
         with self.app.test_client() as client:
             feedback = client.get("/api/v1/sales/1",
-                                  content_type="application/json")                      
+                                  content_type="application/json",)                      
             self.assertEqual(feedback.status_code, 200)          
         
 
