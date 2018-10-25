@@ -1,3 +1,8 @@
 /myenv
 /.vscode
 /APP/API/__pycache__/
+/tests/.pytest_cache
+/__pycache__
+/.pytest_cache
+/.idea
+
