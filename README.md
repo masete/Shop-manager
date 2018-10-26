@@ -56,15 +56,17 @@ Install the dependencies in the requirements.txt file using pip
 
 $ pip install -r requirements.txt
 ```
-$ Populate the requirements.txt using
+Populate the requirements.txt using
 
-pip freeze > requirements.txt
+$pip freeze > requirements.txt
 
 Start the application by running
 ```sh
 $ python run.py
 ```
 Test your setup using [postman](www.getpostman.com) REST-client
-You can checkout my postman collections from https://documenter.getpostman.com/view/5131975/RWgxvFbt
+You can checkout my postman collections from 
+https://documenter.getpostman.com/view/5131975/RWgxvFbt
  
 The APP is hosted on heroku, checkout this Link: https://store-manager-vii.herokuapp.com/
+Hope you had a nice ride
