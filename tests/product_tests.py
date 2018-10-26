@@ -14,6 +14,7 @@ class TestEndpoints(unittest.TestCase):
                                                         product_price=6770000
                                                         )))
             self.assertEqual(feedback.status_code, 400)
+            print(feedback.data)
             feedbackJson = json.loads(feedback.data.decode())
             self.assertIn('Product field can not have space', feedbackJson['Products'])
             self.assertTrue(feedback.content_type, 'application/json')

@@ -16,26 +16,32 @@ def start_app():
     @app.route("/api/v1/products", methods=["POST"], strict_slashes=False)
     def post_a_product():
         """params: none, post a product by postman"""
-        feedback = request.get_json()
-        product_id = len(pdtsLists) + 1
-        product_name = feedback['product_name']
-        product_price = feedback['product_price']
+        try:
+            feedback = request.get_json()
+            product_id = len(pdtsLists) + 1
+            product_name = feedback['product_name']
+            product_price = feedback['product_price']
 
-        if product_name == " ":
-            return jsonify({"Products":"Product field can not have space"}), 400
-        if product_name == "":
-            return jsonify({"Products":"Product field can not be empty"}), 400
-        if product_price == "":
-            return jsonify({"Products":"Product price field cant be empty"}), 400
-        if product_price == " ":
-            return jsonify({"Products":"Product price field cant be passed empty string"}), 400
-        if not isinstance(product_price, int):
-            return jsonify({"Products":"Product price field can not be a string"}), 400
-        if not isinstance(product_name, str):
-            return jsonify({"Products":"Product name field can not be an int"}), 400
+            if product_name == " ":
+                return jsonify({"message":"Product field can not have space"}), 400
+            if product_name == "":
+                return jsonify({"message":"Product field can not be empty"}), 400
+            if product_price == "":
+                return jsonify({"message":"Product price field cant be empty"}), 400
+            if product_price == " ":
+                return jsonify({"message":"Product price field cant be passed empty string"}), 400
+            if not isinstance(product_price, int):
+                return jsonify({"message":"Product price field can not be a string"}), 400
+            if not isinstance(product_name, str):
+                return jsonify({"message":"Product name field can not be an int"}), 400
+            for pdtsList in pdtsLists:
+                if product_name in pdtsList.product_name:
+                    return jsonify({"message": "you have already registered this product"}), 400
 
-        pdtsLists.append(AllProducts(product_id, product_name, product_price))
-        return jsonify({"Products": "a product now exists"}), 201
+            pdtsLists.append(AllProducts(product_id, product_name, product_price))
+            return jsonify({"message": "a product now exists"}), 201
+        except:
+            return jsonify({"message":"Invalid input"})
 
 
     @app.route("/api/v1/products", methods=["GET"], strict_slashes=False)
@@ -53,7 +59,7 @@ def start_app():
         single = []
         for pdtsList in pdtsLists:
             if pdtsList.product_id == product_id:
-                req_dict = (pdtsList.myproducts_id())
+                req_dict = (pdtsList.myproducts())
                 single.append(req_dict)
             if not single:
                 return jsonify({"Products": "product does not exist"})
@@ -62,29 +68,38 @@ def start_app():
 
     salesLists = []
 
+
     @app.route("/api/v1/sales", methods=["POST"], strict_slashes=False)
     def post_a_sale():
         """for posting a sale, id auto increments"""
-        dad = request.get_json()
-        sales_id = len(salesLists) + 1
-        sales_quantity = dad['sales_quantity']
-        sales_price = dad['sales_price']
+        try:
+            dad = request.get_json()
+            sales_id = len(salesLists) + 1
+            sales_quantity = dad['sales_quantity']
+            sales_price = dad['sales_price']
 
 
-        if sales_quantity == "":
-            return jsonify({"Sales":"Sale field can not have space"}), 400
-        if sales_quantity == " ":
-            return jsonify({"Sales":"Sale field can not be passed empty string"}), 400
-        if sales_price == "":
-            return jsonify({"Sales":"Sales price field cant be empty"}), 400
-        if sales_price == " ":
-            return jsonify({"Sales":"Sales price field cant be passed an empty string"}), 400
-        if not isinstance(sales_price, int):
-            return jsonify({"Sales":"sale price field can not be a string"}), 400
-        if not isinstance(sales_quantity, str):
-            return jsonify({"Sales":"sale quantity field can not be an int"}), 400
-        salesLists.append(AllSales(sales_id, sales_quantity, sales_price))
-        return jsonify({"Sales": "a sale now exists"}), 201
+            if sales_quantity == "":
+                return jsonify({"message":"Sale field can not have space"}), 400
+            if sales_quantity == " ":
+                return jsonify({"message":"Sale field can not be passed empty string"}), 400
+            if sales_price == "":
+                return jsonify({"message":"Sales price field cant be empty"}), 400
+            if sales_price == " ":
+                return jsonify({"message":"Sales price field cant be passed an empty string"}), 400
+            if not isinstance(sales_price, int):
+                return jsonify({"message":"sale price field can not be a string"}), 400
+            if not isinstance(sales_quantity, str):
+                return jsonify({"message":"sale quantity field can not be an int"}), 400
+            for salesList in salesLists:
+                    if sales_quantity in salesList.sales_quantity:
+                        return jsonify({"message": "you have already registered this sale"}), 400
+                        
+
+            salesLists.append(AllSales(sales_id, sales_quantity, sales_price))
+            return jsonify({"message": "a sale now exists"}), 201
+        except:
+            return jsonify({"message":"Invalid input"}), 400
 
     @app.route("/api/v1/sales", methods=["GET"], strict_slashes=False)
     def get_all_sales():
