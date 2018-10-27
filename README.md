@@ -4,6 +4,7 @@
 
 ## Badges
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d48549141a545f7b85782c2e9b64145)](https://app.codacy.com/app/masete/Shop-manager?utm_source=github.com&utm_medium=referral&utm_content=masete/Shop-manager&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/masete/Shop-manager.svg?branch=ft-single-sales-record-161439633)](https://travis-ci.org/masete/Shop-manager)
 [![Maintainability](https://api.codeclimate.com/v1/badges/15ffa1f06d31e2d884ae/maintainability)](https://codeclimate.com/github/masete/Shop-manager/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/masete/Shop-manager/badge.svg?branch=ft-single-sales-record-161439633)](https://coveralls.io/github/masete/Shop-manager?branch=ft-single-sales-record-161439633)
