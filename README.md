@@ -7,6 +7,7 @@
 [![Build Status](https://travis-ci.org/masete/Shop-manager.svg?branch=ft-single-sales-record-161439633)](https://travis-ci.org/masete/Shop-manager)
 [![Maintainability](https://api.codeclimate.com/v1/badges/15ffa1f06d31e2d884ae/maintainability)](https://codeclimate.com/github/masete/Shop-manager/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/masete/Shop-manager/badge.svg?branch=ft-single-sales-record-161439633)](https://coveralls.io/github/masete/Shop-manager?branch=ft-single-sales-record-161439633)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d74df6128d854c51be20be9b9e775544)](https://www.codacy.com/app/masete/Shop-manager?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=masete/Shop-manager&amp;utm_campaign=Badge_Grade)
 
 
 ## Features 
@@ -59,11 +60,11 @@ $ pip install -r requirements.txt
 Populate the requirements.txt using
 
 $ pip freeze  >  requirements.txt
-
-Start the application by running
 ```sh
-$ python run.py
+Start the application by running
 ```
+$ python run.py
+```sh
 Test your setup using [postman](www.getpostman.com) REST-client
 You can checkout my postman collections from :
 https://documenter.getpostman.com/view/5131975/RWgxvFbt
